@@ -1,6 +1,4 @@
-const cardContainer = document.getElementById('cardContainer');
-
-// Remove scroll logic since no scrolling
+const cardContainer = document.querySelector('.visiting-card-container');
 
 // Sticky navigation buttons
 const navButtons = document.querySelectorAll('.nav-btn');
@@ -10,12 +8,14 @@ function setActiveNavButton(activeButton) {
     activeButton.classList.add('active');
 }
 
-document.querySelectorAll('.nav-btn').forEach(button => {
+navButtons.forEach(button => {
     button.addEventListener('click', function() {
         const targetId = this.getAttribute('data-target');
         const targetElement = document.getElementById(targetId);
 
-        // Add expanded class to container
+        if (!cardContainer) return;
+
+        // Expand the visiting card area to reveal content
         cardContainer.classList.add('expanded');
 
         // Hide all sections
@@ -26,6 +26,7 @@ document.querySelectorAll('.nav-btn').forEach(button => {
         // Show the target section
         if (targetElement) {
             targetElement.classList.add('active');
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         // Mark current nav button active
@@ -33,7 +34,7 @@ document.querySelectorAll('.nav-btn').forEach(button => {
     });
 });
 
-// Optionally, set initial active state to first nav button on load
+// Optionally, set initial active state to the first nav button
 if (navButtons.length > 0) {
     setActiveNavButton(navButtons[0]);
 }
