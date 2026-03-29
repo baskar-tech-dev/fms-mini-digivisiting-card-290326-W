@@ -1,575 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SivasArtsandCraft Academy - Digital Visiting Card</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #f5ede1 0%, #e8d7c3 100%);
-        }
-
-        /* Sticky Visiting Card */
-        .visiting-card-container {
-            position: sticky;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #f5ede1 0%, #e8d7c3 100%);
-            z-index: 100;
-            transition: all 0.6s ease;
-        }
-
-        /* Scale down on scroll */
-        .visiting-card-container.scrolled {
-            position: relative;
-            top: auto;
-            width: 100%;
-            height: auto;
-            padding: 20px;
-            background: #fef9f3;
-        }
-
-        /* Visiting Card */
-        .visiting-card {
-            width: 100%;
-            max-width: 900px;
-            background: linear-gradient(135deg, #fef9f3 0%, #f5ede1 100%);
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            padding: 0;
-            overflow: hidden;
-            aspect-ratio: 3.5 / 2;
-            display: grid;
-            grid-template-columns: 40% 60%;
-            transition: all 0.6s ease;
-        }
-
-        .visiting-card-container.scrolled .visiting-card {
-            aspect-ratio: auto;
-            grid-template-columns: 1fr;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 0;
-        }
-
-        /* Left Side - Visual */
-        .card-visual {
-            background: linear-gradient(135deg, #d4a574 0%, #c8571f 100%);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            min-height: 100%;
-        }
-
-        .visiting-card-container.scrolled .card-visual {
-            min-height: 200px;
-            padding: 40px 30px;
-        }
-
-        .card-visual::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-
-        .card-visual::after {
-            content: '';
-            position: absolute;
-            bottom: -50%;
-            left: -50%;
-            width: 150px;
-            height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-
-        .card-icon {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            z-index: 1;
-        }
-
-        .card-visual-text {
-            font-size: 1.1rem;
-            font-weight: bold;
-            z-index: 1;
-            line-height: 1.5;
-        }
-
-        .card-visual-subtext {
-            font-size: 0.8rem;
-            margin-top: 8px;
-            opacity: 0.9;
-            z-index: 1;
-        }
-
-        /* Right Side - Details */
-        .card-details {
-            padding: 35px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: #fef9f3;
-            overflow-y: auto;
-        }
-
-        .visiting-card-container.scrolled .card-details {
-            padding: 30px;
-            display: block;
-        }
-
-        .business-name {
-            margin-bottom: 15px;
-        }
-
-        .business-name h2 {
-            font-size: 1.8rem;
-            color: #d4a574;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .business-name p {
-            font-size: 0.85rem;
-            color: #c8571f;
-            margin: 3px 0 0 0;
-            letter-spacing: 1px;
-        }
-
-        .divider {
-            height: 2px;
-            background: linear-gradient(to right, #d4a574, transparent);
-            margin: 12px 0;
-        }
-
-        .contact-details {
-            margin-bottom: 15px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            color: #333;
-        }
-
-        .contact-item i {
-            color: #d4a574;
-            width: 18px;
-            margin-right: 10px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .contact-item p {
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .visiting-card-container.scrolled .card-footer {
-            margin-top: 20px;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 8px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            width: 28px;
-            height: 28px;
-            align-items: center;
-            justify-content: center;
-            background: #d4a574;
-            color: white;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: #c8571f;
-            transform: scale(1.1);
-        }
-
-        .card-logo {
-            font-size: 1.2rem;
-            color: #d4a574;
-            font-weight: bold;
-        }
-
-        .visiting-card-container.scrolled .card-logo {
-            display: none;
-        }
-
-        /* Expanded Content */
-        .expanded-content {
-            background: white;
-            position: relative;
-            z-index: 50;
-        }
-
-        .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            font-size: 2.2rem;
-            color: #d4a574;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        /* About Section */
-        .about-section {
-            background: linear-gradient(135deg, #fef9f3 0%, #f5ede1 100%);
-        }
-
-        .about-text {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            color: #d4a574;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .service-card ul {
-            list-style: none;
-            text-align: left;
-        }
-
-        .service-card li {
-            color: #666;
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .service-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #ff6b35;
-            font-weight: bold;
-        }
-
-        /* Classes Section */
-        .classes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .class-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #d4a574;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .class-card h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .class-details {
-            margin-bottom: 15px;
-        }
-
-        .class-detail-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .class-detail-item i {
-            color: #d4a574;
-            width: 20px;
-            margin-right: 10px;
-        }
-
-        .class-price {
-            font-size: 1.3rem;
-            color: #ff6b35;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            background: linear-gradient(135deg, #fef9f3 0%, #f5ede1 100%);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #ff6b35;
-        }
-
-        .stars {
-            color: #ff6b35;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .testimonial-text {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #d4a574;
-            font-style: normal;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .contact-box {
-            background: linear-gradient(135deg, #d4a574 0%, #c8571f 100%);
-            padding: 30px;
-            border-radius: 8px;
-            color: white;
-            text-align: center;
-        }
-
-        .contact-box i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .contact-box h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .contact-box p {
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            text-align: center;
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border: 2px solid #d4a574;
-            background: white;
-            color: #d4a574;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: #d4a574;
-            color: white;
-        }
-
-        .btn-primary {
-            background: #d4a574;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #c8571f;
-            border-color: #c8571f;
-        }
-
-        /* Footer */
-        footer {
-            background: #2c2c2c;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        footer p {
-            margin: 0;
-            color: #bbb;
-        }
-
-        footer a {
-            color: #d4a574;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-            z-index: 110;
-        }
-
-        .visiting-card-container.scrolled .scroll-indicator {
-            display: none;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .visiting-card {
-                grid-template-columns: 1fr;
-                aspect-ratio: auto;
-            }
-
-            .card-visual {
-                min-height: 200px;
-            }
-
-            .section {
-                padding: 40px 15px;
-            }
-
-            .services-grid,
-            .testimonials-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Sticky Visiting Card Section -->
     <div class="visiting-card-container" id="cardContainer">
@@ -578,7 +20,7 @@
             <div class="card-visual">
                 <div class="card-icon">🎨</div>
                 <div class="card-visual-text">
-                    SivasArtsandCraft<br>Academy
+                    Sivas Arts and Craft<br>Academy
                 </div>
                 <div class="card-visual-subtext">
                     Nurturing Creativity
@@ -589,7 +31,7 @@
             <div class="card-details">
                 <div>
                     <div class="business-name">
-                        <h2>SivasArtsandCraft</h2>
+                        <h2>Sivas Arts and Craft</h2>
                         <p>ACADEMY</p>
                     </div>
                     <div class="divider"></div>
@@ -597,7 +39,7 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p>123 Art Street, Kumbakonam<br>Tamil Nadu 612001<br>South India</p>
+                            <p>Periyar Colony, Tirupur<br>Tamil Nadu 612001<br> India</p>
                         </div>
 
                         <div class="contact-item">
@@ -619,288 +61,309 @@
 
                 <div class="card-footer">
                     <div class="social-links">
-                        <a href="https://www.facebook.com/sivasartscraft" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/sivasartscraft" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/919876543210" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/sivasartscraft" title="Facebook" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/sivasartscraft" title="Instagram" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" title="WhatsApp" target="_blank"><i
+                                class="fab fa-whatsapp"></i></a>
                         <a href="mailto:info@sivasartscraft.com" title="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                     <div class="card-logo">SA</div>
                 </div>
             </div>
         </div>
+        <div class="visiting-card" id="about">
+            <div class="expanded-content">
+                <!-- About Section -->
+                <section class="section about-section">
+                    <h2>About Our Academy</h2>
+                    <p class="about-text">
+                        Welcome to <strong>SivasArtsandCraft Academy</strong>, your premier destination for authentic
+                        arts and crafts education in South India.
+                        With a passion for preserving traditional art forms and nurturing contemporary creative
+                        expressions, we've been serving the community
+                        with excellence and dedication.
+                    </p>
+                    <p class="about-text">
+                        Our academy is committed to fostering creativity, building confidence, and developing artistic
+                        skills in students of all ages and experience levels.
+                        Whether you're a beginner looking to explore your artistic side or an experienced artist seeking
+                        to refine your techniques, we have the perfect
+                        program for you.
+                    </p>
+                    <p class="about-text">
+                        We believe that art is a universal language that connects us all. Our experienced instructors
+                        are dedicated to helping you discover your unique
+                        creative voice while maintaining respect for traditional techniques and contemporary
+                        innovations.
+                    </p>
+                </section>
+            </div>
+        </div>
 
+        <div class="visiting-card" id="services">
+            <div class="expanded-content">
+                <!-- Services Section -->
+                <section class="section">
+                    <h2>Our Services</h2>
+                    <div class="services-grid">
+                        <!-- Painting -->
+                        <div class="service-card">
+                            <img src="https://source.unsplash.com/random/400x300?painting,art" alt="Painting">
+                            <h3>🎨 Painting</h3>
+                            <p>Explore the world of colors and canvases with our comprehensive painting courses.</p>
+                            <ul>
+                                <li>Acrylic Painting</li>
+                                <li>Watercolor Techniques</li>
+                                <li>Oil Painting</li>
+                                <li>Canvas & Mural Art</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pottery -->
+                        <div class="service-card">
+                            <img src="https://source.unsplash.com/random/400x300?pottery,clay" alt="Pottery">
+                            <h3>🏺 Pottery</h3>
+                            <p>Master the ancient art of pottery and clay modeling with hands-on training.</p>
+                            <ul>
+                                <li>Wheel Throwing</li>
+                                <li>Hand Building</li>
+                                <li>Glazing & Firing</li>
+                                <li>Ceramic Design</li>
+                            </ul>
+                        </div>
+
+                        <!-- Embroidery -->
+                        <div class="service-card">
+                            <img src="https://source.unsplash.com/random/400x300?embroidery,needlework"
+                                alt="Embroidery">
+                            <h3>✨ Embroidery</h3>
+                            <p>Learn traditional and modern embroidery techniques for textile art creation.</p>
+                            <ul>
+                                <li>Hand Embroidery</li>
+                                <li>Traditional Patterns</li>
+                                <li>Thread Work</li>
+                                <li>Fabric Decoration</li>
+                            </ul>
+                        </div>
+
+                        <!-- Sketching -->
+                        <div class="service-card">
+                            <img src="https://source.unsplash.com/random/400x300?sketching,drawing" alt="Sketching">
+                            <h3>✏️ Sketching</h3>
+                            <p>Develop your drawing skills from basic fundamentals to advanced techniques.</p>
+                            <ul>
+                                <li>Pencil Sketching</li>
+                                <li>Figure Drawing</li>
+                                <li>Portrait Techniques</li>
+                                <li>Landscape Art</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="visiting-card" id="classes">
+            <div class="expanded-content">
+                <!-- Classes Section -->
+                <section class="section">
+                    <h2>Classes & Programs</h2>
+                    <div class="classes-grid">
+                        <div class="class-card">
+                            <h3>Beginner Classes</h3>
+                            <div class="class-details">
+                                <div class="class-detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon & Wed: 4:00 PM - 5:30 PM</span>
+                                </div>
+                                <div class="class-detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 8 students per batch</span>
+                                </div>
+                            </div>
+                            <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Perfect for those just
+                                starting their creative journey.</p>
+                            <div class="class-price">₹2,500/month</div>
+                        </div>
+
+                        <div class="class-card">
+                            <h3>Intermediate Classes</h3>
+                            <div class="class-details">
+                                <div class="class-detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Tue & Thu: 5:00 PM - 6:30 PM</span>
+                                </div>
+                                <div class="class-detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 8 students per batch</span>
+                                </div>
+                            </div>
+                            <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Enhance your skills and
+                                explore advanced techniques.</p>
+                            <div class="class-price">₹3,000/month</div>
+                        </div>
+
+                        <div class="class-card">
+                            <h3>Advanced Classes</h3>
+                            <div class="class-details">
+                                <div class="class-detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Sat & Sun: 10:00 AM - 12:00 PM</span>
+                                </div>
+                                <div class="class-detail-item">
+                                    <i class="fas fa-user"></i>
+                                    <span>One-on-One Mentoring</span>
+                                </div>
+                            </div>
+                            <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Professional-level training
+                                with personalized guidance.</p>
+                            <div class="class-price">₹4,500/month</div>
+                        </div>
+
+                        <div class="class-card">
+                            <h3>Summer Workshops</h3>
+                            <div class="class-details">
+                                <div class="class-detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>June - August</span>
+                                </div>
+                                <div class="class-detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Open to All Levels</span>
+                                </div>
+                            </div>
+                            <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Intensive workshops on
+                                specific techniques.</p>
+                            <div class="class-price">₹1,500/workshop</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="visiting-card" id="testimonials">
+            <div class="expanded-content">
+                 <!-- Testimonials Section -->
+                <section class="section testimonials-section" >
+                    <h2>Student Testimonials</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"The painting classes completely transformed my artistic
+                                journey. The instructors are incredibly knowledgeable and patient. Highly recommended!"
+                            </p>
+                            <div class="testimonial-author">- Priya Sharma, Painting Student</div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"I came to learn basic pottery and fell in love with the entire
+                                process. The hands-on approach is amazing. The best decision ever!"</p>
+                            <div class="testimonial-author">- Arjun Reddy, Pottery Student</div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"The embroidery classes introduced me to the beautiful world of
+                                textile art. I've created pieces I'm incredibly proud of. Exceptional!"</p>
+                            <div class="testimonial-author">- Anjali Nair, Embroidery Student</div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"As someone with no drawing experience, I was nervous. But the
+                                instructors made it so easy. Now sketching is my favorite hobby!"</p>
+                            <div class="testimonial-author">- Vikram Kumar, Sketching Student</div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"Amazing learning environment! Small class sizes mean plenty of
+                                attention. The variety of art forms available is wonderful!"</p>
+                            <div class="testimonial-author">- Meera & Family, Regular Students</div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"The summer workshop exceeded all my expectations.
+                                Well-structured curriculum, top-notch materials, and wonderful friends made!"</p>
+                            <div class="testimonial-author">- Rajesh Kumar, Workshop Participant</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="visiting-card" id="contact">
+            <div class="expanded-content">
+                <!-- Contact Section -->
+                <section class="section contact-section" >
+                    <h2>Get in Touch</h2>
+                    <div class="contact-grid">
+                        <div class="contact-box">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Location</h3>
+                            <p>123 Art Street, Kumbakonam<br>Tamil Nadu 612001<br>South India</p>
+                        </div>
+
+                        <div class="contact-box">
+                            <i class="fas fa-phone"></i>
+                            <h3>Call Us</h3>
+                            <p>+91 98765 43210<br>+91 98765 43211<br>Mon-Sat: 9 AM - 6 PM</p>
+                        </div>
+
+                        <div class="contact-box">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email Us</h3>
+                            <p>info@sivasartscraft.com<br>classes@sivasartscraft.com<br>24-hour response time</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="tel:+919876543210" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                        <a href="mailto:info@sivasartscraft.com" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a>
+                        <a href="https://wa.me/919876543210" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn" onclick="window.print()">
+                            <i class="fas fa-print"></i> Print Card
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+          
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </div>
     </div>
 
-    <!-- Expanded Content -->
-    <div class="expanded-content">
-        <!-- About Section -->
-        <section class="section about-section" id="about">
-            <h2>About Our Academy</h2>
-            <p class="about-text">
-                Welcome to <strong>SivasArtsandCraft Academy</strong>, your premier destination for authentic arts and crafts education in South India. 
-                With a passion for preserving traditional art forms and nurturing contemporary creative expressions, we've been serving the community 
-                with excellence and dedication.
-            </p>
-            <p class="about-text">
-                Our academy is committed to fostering creativity, building confidence, and developing artistic skills in students of all ages and experience levels. 
-                Whether you're a beginner looking to explore your artistic side or an experienced artist seeking to refine your techniques, we have the perfect 
-                program for you.
-            </p>
-            <p class="about-text">
-                We believe that art is a universal language that connects us all. Our experienced instructors are dedicated to helping you discover your unique 
-                creative voice while maintaining respect for traditional techniques and contemporary innovations.
-            </p>
-        </section>
-
-        <!-- Services Section -->
-        <section class="section" id="services">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <!-- Painting -->
-                <div class="service-card">
-                    <img src="https://source.unsplash.com/random/400x300?painting,art" alt="Painting">
-                    <h3>🎨 Painting</h3>
-                    <p>Explore the world of colors and canvases with our comprehensive painting courses.</p>
-                    <ul>
-                        <li>Acrylic Painting</li>
-                        <li>Watercolor Techniques</li>
-                        <li>Oil Painting</li>
-                        <li>Canvas & Mural Art</li>
-                    </ul>
-                </div>
-
-                <!-- Pottery -->
-                <div class="service-card">
-                    <img src="https://source.unsplash.com/random/400x300?pottery,clay" alt="Pottery">
-                    <h3>🏺 Pottery</h3>
-                    <p>Master the ancient art of pottery and clay modeling with hands-on training.</p>
-                    <ul>
-                        <li>Wheel Throwing</li>
-                        <li>Hand Building</li>
-                        <li>Glazing & Firing</li>
-                        <li>Ceramic Design</li>
-                    </ul>
-                </div>
-
-                <!-- Embroidery -->
-                <div class="service-card">
-                    <img src="https://source.unsplash.com/random/400x300?embroidery,needlework" alt="Embroidery">
-                    <h3>✨ Embroidery</h3>
-                    <p>Learn traditional and modern embroidery techniques for textile art creation.</p>
-                    <ul>
-                        <li>Hand Embroidery</li>
-                        <li>Traditional Patterns</li>
-                        <li>Thread Work</li>
-                        <li>Fabric Decoration</li>
-                    </ul>
-                </div>
-
-                <!-- Sketching -->
-                <div class="service-card">
-                    <img src="https://source.unsplash.com/random/400x300?sketching,drawing" alt="Sketching">
-                    <h3>✏️ Sketching</h3>
-                    <p>Develop your drawing skills from basic fundamentals to advanced techniques.</p>
-                    <ul>
-                        <li>Pencil Sketching</li>
-                        <li>Figure Drawing</li>
-                        <li>Portrait Techniques</li>
-                        <li>Landscape Art</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Classes Section -->
-        <section class="section" id="classes">
-            <h2>Classes & Programs</h2>
-            <div class="classes-grid">
-                <div class="class-card">
-                    <h3>Beginner Classes</h3>
-                    <div class="class-details">
-                        <div class="class-detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Mon & Wed: 4:00 PM - 5:30 PM</span>
-                        </div>
-                        <div class="class-detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Max 8 students per batch</span>
-                        </div>
-                    </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Perfect for those just starting their creative journey.</p>
-                    <div class="class-price">₹2,500/month</div>
-                </div>
-
-                <div class="class-card">
-                    <h3>Intermediate Classes</h3>
-                    <div class="class-details">
-                        <div class="class-detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Tue & Thu: 5:00 PM - 6:30 PM</span>
-                        </div>
-                        <div class="class-detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Max 8 students per batch</span>
-                        </div>
-                    </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Enhance your skills and explore advanced techniques.</p>
-                    <div class="class-price">₹3,000/month</div>
-                </div>
-
-                <div class="class-card">
-                    <h3>Advanced Classes</h3>
-                    <div class="class-details">
-                        <div class="class-detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Sat & Sun: 10:00 AM - 12:00 PM</span>
-                        </div>
-                        <div class="class-detail-item">
-                            <i class="fas fa-user"></i>
-                            <span>One-on-One Mentoring</span>
-                        </div>
-                    </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Professional-level training with personalized guidance.</p>
-                    <div class="class-price">₹4,500/month</div>
-                </div>
-
-                <div class="class-card">
-                    <h3>Summer Workshops</h3>
-                    <div class="class-details">
-                        <div class="class-detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>June - August</span>
-                        </div>
-                        <div class="class-detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Open to All Levels</span>
-                        </div>
-                    </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Intensive workshops on specific techniques.</p>
-                    <div class="class-price">₹1,500/workshop</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="section testimonials-section" id="testimonials">
-            <h2>Student Testimonials</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The painting classes completely transformed my artistic journey. The instructors are incredibly knowledgeable and patient. Highly recommended!"</p>
-                    <div class="testimonial-author">- Priya Sharma, Painting Student</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"I came to learn basic pottery and fell in love with the entire process. The hands-on approach is amazing. The best decision ever!"</p>
-                    <div class="testimonial-author">- Arjun Reddy, Pottery Student</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The embroidery classes introduced me to the beautiful world of textile art. I've created pieces I'm incredibly proud of. Exceptional!"</p>
-                    <div class="testimonial-author">- Anjali Nair, Embroidery Student</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"As someone with no drawing experience, I was nervous. But the instructors made it so easy. Now sketching is my favorite hobby!"</p>
-                    <div class="testimonial-author">- Vikram Kumar, Sketching Student</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Amazing learning environment! Small class sizes mean plenty of attention. The variety of art forms available is wonderful!"</p>
-                    <div class="testimonial-author">- Meera & Family, Regular Students</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The summer workshop exceeded all my expectations. Well-structured curriculum, top-notch materials, and wonderful friends made!"</p>
-                    <div class="testimonial-author">- Rajesh Kumar, Workshop Participant</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section contact-section" id="contact">
-            <h2>Get in Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-box">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
-                    <p>123 Art Street, Kumbakonam<br>Tamil Nadu 612001<br>South India</p>
-                </div>
-
-                <div class="contact-box">
-                    <i class="fas fa-phone"></i>
-                    <h3>Call Us</h3>
-                    <p>+91 98765 43210<br>+91 98765 43211<br>Mon-Sat: 9 AM - 6 PM</p>
-                </div>
-
-                <div class="contact-box">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>info@sivasartscraft.com<br>classes@sivasartscraft.com<br>24-hour response time</p>
-                </div>
-            </div>
-
-            <div class="action-buttons">
-                <a href="tel:+919876543210" class="btn btn-primary">
-                    <i class="fas fa-phone"></i> Call Now
-                </a>
-                <a href="mailto:info@sivasartscraft.com" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Email Us
-                </a>
-                <a href="https://wa.me/919876543210" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <button class="btn" onclick="window.print()">
-                    <i class="fas fa-print"></i> Print Card
-                </button>
-            </div>
-        </section>
+    <!-- Sticky Navigation Buttons -->
+    <div class="sticky-nav-buttons">
+        <button class="nav-btn" data-target="services">
+            <i class="fas fa-palette"></i> Services & Offers
+        </button>
+        <button class="nav-btn" data-target="about">
+            <i class="fas fa-info-circle"></i> About Us
+        </button>
+        <button class="nav-btn" data-target="classes">
+            <i class="fas fa-graduation-cap"></i> Classes & Programs
+        </button>
+        <button class="nav-btn" data-target="testimonials">
+            <i class="fas fa-star"></i> Student Testimonials
+        </button>
+        <button class="nav-btn" data-target="contact">
+            <i class="fas fa-envelope"></i> Contact Section
+        </button>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 SivasArtsandCraft Academy. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: #ff6b35;"></i> for Art Lovers</p>
-        <p style="margin-top: 10px;">
-            <a href="https://www.facebook.com/sivasartscraft" target="_blank"><i class="fab fa-facebook"></i></a> &nbsp;
-            <a href="https://www.instagram.com/sivasartscraft" target="_blank"><i class="fab fa-instagram"></i></a> &nbsp;
-            <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </p>
-    </footer>
-
-    <script>
-        const cardContainer = document.getElementById('cardContainer');
-        let hasScrolled = false;
-
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            
-            if (scrollPosition > 50 && !hasScrolled) {
-                cardContainer.classList.add('scrolled');
-                hasScrolled = true;
-            } else if (scrollPosition <= 50 && hasScrolled) {
-                cardContainer.classList.remove('scrolled');
-                hasScrolled = false;
-            }
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
