@@ -9,7 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="script" href="/js/script.js"> -->
 </head>
 
 <body>
@@ -20,7 +21,7 @@
             <div class="card-visual">
                 <div class="card-icon">🎨</div>
                 <div class="card-visual-text">
-                    Sivas Arts and Craft<br>Academy
+                    Imaginic Arts<br>Academy
                 </div>
                 <div class="card-visual-subtext">
                     Nurturing Creativity
@@ -31,8 +32,8 @@
             <div class="card-details">
                 <div>
                     <div class="business-name">
-                        <h2>Sivas Arts and Craft</h2>
-                        <p>ACADEMY</p>
+                        <h2> Imaginic Art Academy</h2>
+                        <p></p>
                     </div>
                     <div class="divider"></div>
 
@@ -49,13 +50,13 @@
 
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <p>info@sivasartscraft.com</p>
+                            <p>imaginicartacademy@gmail.com</p>
                         </div>
 
-                        <div class="contact-item">
+                        <!-- <div class="contact-item">
                             <i class="fas fa-globe"></i>
                             <p>www.sivasartscraft.com</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -343,7 +344,7 @@
         </button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
