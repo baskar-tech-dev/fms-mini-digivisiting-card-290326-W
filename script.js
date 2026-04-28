@@ -1,40 +1,39 @@
-const cardContainer = document.querySelector('.visiting-card-container');
+// Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
-// Sticky navigation buttons
-const navButtons = document.querySelectorAll('.nav-btn');
-
-function setActiveNavButton(activeButton) {
-    navButtons.forEach(btn => btn.classList.remove('active'));
-    activeButton.classList.add('active');
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
 }
 
-navButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const targetId = this.getAttribute('data-target');
-        const targetElement = document.getElementById(targetId);
-
-        if (!cardContainer) return;
-
-        // Expand the visiting card area to reveal content
-        cardContainer.classList.add('expanded');
-
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-        });
-
-        // Show the target section
-        if (targetElement) {
-            targetElement.classList.add('active');
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // Mark current nav button active
-        setActiveNavButton(this);
+// Close menu when a link is clicked
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
     });
 });
 
-// Optionally, set initial active state to the first nav button
-if (navButtons.length > 0) {
-    setActiveNavButton(navButtons[0]);
-}
+// Active Link Highlighting on Scroll
+window.addEventListener('scroll', () => {
+    let current = '';
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
+

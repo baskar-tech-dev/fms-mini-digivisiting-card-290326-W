@@ -1,66 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imaginic Arts and Craft Academy</title>
+    <title>Sivas Arts and Craft Academy - Digital Visiting Card</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-palette"></i> Imaginic Academy
+    <!-- Sticky Visiting Card Section -->
+    <div class="visiting-card-container">
+        <div class="visiting-card">
+            <!-- Left Side - Visual -->
+            <div class="card-visual">
+                <div class="card-icon">🎨</div>
+                <div class="card-visual-text">
+                    Sivas Arts and Craft<br>Academy
+                </div>
+                <div class="card-visual-subtext">
+                    Nurturing Creativity
+                </div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#classes" class="nav-link">Classes</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <!-- Right Side - Details -->
+            <div class="card-details">
+                <div>
+                    <div class="business-name">
+                        <h2>Sivas Arts and Craft</h2>
+                        <p>ACADEMY</p>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Periyar Colony, Tirupur<br>Tamil Nadu 612001<br> India</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+91 98765 43210</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@sivasartscraft.com</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <p>www.sivasartscraft.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sivasartscraft" title="Facebook" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/sivasartscraft" title="Instagram" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" title="WhatsApp" target="_blank"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:info@sivasartscraft.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <div class="card-logo">SA</div>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Imaginic Arts and Craft Academy</h1>
-            <p>Nurturing Creativity, Building Confidence, Creating Masterpieces</p>
-            <a href="#contact" class="cta-button">Get Started Today</a>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="section about-section" id="about">
-        <div class="section-container">
+        <section class="section about-section" id="about">
             <h2>About Our Academy</h2>
             <p class="about-text">
-                Welcome to <strong>Imaginic Arts and Craft Academy</strong>, your premier destination for authentic arts and crafts education in South India. With a passion for preserving traditional art forms and nurturing contemporary creative expressions, we've been serving the community with excellence and dedication.
+                Welcome to <strong>SivasArtsandCraft Academy</strong>, your premier destination for authentic
+                arts and crafts education in South India.
+                With a passion for preserving traditional art forms and nurturing contemporary creative
+                expressions, we've been serving the community
+                with excellence and dedication.
             </p>
             <p class="about-text">
-                Our academy is committed to fostering creativity, building confidence, and developing artistic skills in students of all ages and experience levels. Whether you're a beginner looking to explore your artistic side or an experienced artist seeking to refine your techniques, we have the perfect program for you.
+                Our academy is committed to fostering creativity, building confidence, and developing artistic
+                skills in students of all ages and experience levels.
+                Whether you're a beginner looking to explore your artistic side or an experienced artist seeking
+                to refine your techniques, we have the perfect
+                program for you.
             </p>
             <p class="about-text">
-                We believe that art is a universal language that connects us all. Our experienced instructors are dedicated to helping you discover your unique creative voice while maintaining respect for traditional techniques and contemporary innovations.
+                We believe that art is a universal language that connects us all. Our experienced instructors
+                are dedicated to helping you discover your unique
+                creative voice while maintaining respect for traditional techniques and contemporary
+                innovations.
             </p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section" id="services">
-        <div class="section-container">
+        </section>
+        <section class="section" id="services">
             <h2>Our Services</h2>
             <div class="services-grid">
+                <!-- Painting -->
                 <div class="service-card">
                     <img src="https://source.unsplash.com/random/400x300?painting,art" alt="Painting">
                     <h3>🎨 Painting</h3>
@@ -73,6 +117,7 @@
                     </ul>
                 </div>
 
+                <!-- Pottery -->
                 <div class="service-card">
                     <img src="https://source.unsplash.com/random/400x300?pottery,clay" alt="Pottery">
                     <h3>🏺 Pottery</h3>
@@ -85,6 +130,7 @@
                     </ul>
                 </div>
 
+                <!-- Embroidery -->
                 <div class="service-card">
                     <img src="https://source.unsplash.com/random/400x300?embroidery,needlework" alt="Embroidery">
                     <h3>✨ Embroidery</h3>
@@ -97,6 +143,7 @@
                     </ul>
                 </div>
 
+                <!-- Sketching -->
                 <div class="service-card">
                     <img src="https://source.unsplash.com/random/400x300?sketching,drawing" alt="Sketching">
                     <h3>✏️ Sketching</h3>
@@ -109,12 +156,8 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Classes Section -->
-    <section class="section" id="classes">
-        <div class="section-container">
+        </section>
+         <section class="section" id="classes">
             <h2>Classes & Programs</h2>
             <div class="classes-grid">
                 <div class="class-card">
@@ -129,7 +172,8 @@
                             <span>Max 8 students per batch</span>
                         </div>
                     </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Perfect for those just starting their creative journey.</p>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Perfect for those just
+                        starting their creative journey.</p>
                     <div class="class-price">₹2,500/month</div>
                 </div>
 
@@ -145,7 +189,8 @@
                             <span>Max 8 students per batch</span>
                         </div>
                     </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Enhance your skills and explore advanced techniques.</p>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Enhance your skills and
+                        explore advanced techniques.</p>
                     <div class="class-price">₹3,000/month</div>
                 </div>
 
@@ -161,7 +206,8 @@
                             <span>One-on-One Mentoring</span>
                         </div>
                     </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Professional-level training with personalized guidance.</p>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Professional-level training
+                        with personalized guidance.</p>
                     <div class="class-price">₹4,500/month</div>
                 </div>
 
@@ -177,60 +223,62 @@
                             <span>Open to All Levels</span>
                         </div>
                     </div>
-                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Intensive workshops on specific techniques.</p>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 10px;">Intensive workshops on
+                        specific techniques.</p>
                     <div class="class-price">₹1,500/workshop</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section" id="testimonials">
-        <div class="section-container">
+         <section class="section testimonials-section" id="testimonials">
             <h2>Student Testimonials</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The painting classes completely transformed my artistic journey. The instructors are incredibly knowledgeable and patient. Highly recommended!"</p>
+                    <p class="testimonial-text">"The painting classes completely transformed my artistic
+                        journey. The instructors are incredibly knowledgeable and patient. Highly recommended!"
+                    </p>
                     <div class="testimonial-author">- Priya Sharma, Painting Student</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"I came to learn basic pottery and fell in love with the entire process. The hands-on approach is amazing. The best decision ever!"</p>
+                    <p class="testimonial-text">"I came to learn basic pottery and fell in love with the entire
+                        process. The hands-on approach is amazing. The best decision ever!"</p>
                     <div class="testimonial-author">- Arjun Reddy, Pottery Student</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The embroidery classes introduced me to the beautiful world of textile art. I've created pieces I'm incredibly proud of. Exceptional!"</p>
+                    <p class="testimonial-text">"The embroidery classes introduced me to the beautiful world of
+                        textile art. I've created pieces I'm incredibly proud of. Exceptional!"</p>
                     <div class="testimonial-author">- Anjali Nair, Embroidery Student</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"As someone with no drawing experience, I was nervous. But the instructors made it so easy. Now sketching is my favorite hobby!"</p>
+                    <p class="testimonial-text">"As someone with no drawing experience, I was nervous. But the
+                        instructors made it so easy. Now sketching is my favorite hobby!"</p>
                     <div class="testimonial-author">- Vikram Kumar, Sketching Student</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Amazing learning environment! Small class sizes mean plenty of attention. The variety of art forms available is wonderful!"</p>
+                    <p class="testimonial-text">"Amazing learning environment! Small class sizes mean plenty of
+                        attention. The variety of art forms available is wonderful!"</p>
                     <div class="testimonial-author">- Meera & Family, Regular Students</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The summer workshop exceeded all my expectations. Well-structured curriculum, top-notch materials, and wonderful friends made!"</p>
+                    <p class="testimonial-text">"The summer workshop exceeded all my expectations.
+                        Well-structured curriculum, top-notch materials, and wonderful friends made!"</p>
                     <div class="testimonial-author">- Rajesh Kumar, Workshop Participant</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="section-container">
+          <section class="section contact-section" id="contact">
             <h2>Get in Touch</h2>
             <div class="contact-grid">
                 <div class="contact-box">
@@ -248,7 +296,7 @@
                 <div class="contact-box">
                     <i class="fas fa-envelope"></i>
                     <h3>Email Us</h3>
-                    <p>info@Imaginicartscraft.com<br>classes@Imaginicartscraft.com<br>24-hour response time</p>
+                    <p>info@sivasartscraft.com<br>classes@sivasartscraft.com<br>24-hour response time</p>
                 </div>
             </div>
 
@@ -256,44 +304,46 @@
                 <a href="tel:+919876543210" class="btn btn-primary">
                     <i class="fas fa-phone"></i> Call Now
                 </a>
-                <a href="mailto:info@Imaginicartscraft.com" class="btn btn-primary">
+                <a href="mailto:info@sivasartscraft.com" class="btn btn-primary">
                     <i class="fas fa-envelope"></i> Email Us
                 </a>
                 <a href="https://wa.me/919876543210" class="btn btn-primary" target="_blank">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <button class="btn" onclick="window.print()">
-                    <i class="fas fa-print"></i> Print
+                    <i class="fas fa-print"></i> Print Card
                 </button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <h3>Imaginic Arts and Craft Academy</h3>
-                <p>Where creativity meets excellence</p>
-                <div class="social-footer-links">
-                    <a href="https://www.facebook.com/Imaginicartscraft" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/Imaginicartscraft" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/919876543210" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:info@Imaginicartscraft.com" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-info">
-                <p><i class="fas fa-map-marker-alt"></i> Periyar Colony, Tirupur, Tamil Nadu 612001</p>
-                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> info@Imaginicartscraft.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Imaginic Arts and Craft Academy. All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
+    <div>
+
+    </div>
+
+   
+
+    <!-- Sticky Navigation Buttons -->
+    <div class="sticky-nav-buttons">
+       
+        <button class="nav-btn" data-target="about">
+            <i class="fas fa-info-circle"></i>  
+        </button>
+         <button class="nav-btn" data-target="services">
+            <i class="fas fa-palette"></i>  
+        </button>
+        <button class="nav-btn" data-target="classes">
+            <i class="fas fa-graduation-cap"></i> 
+        </button>
+        <button class="nav-btn" data-target="testimonials">
+            <i class="fas fa-star"></i>  
+        </button>
+        <button class="nav-btn" data-target="contact">
+            <i class="fas fa-envelope"></i> 
+        </button>
+    </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
- 
