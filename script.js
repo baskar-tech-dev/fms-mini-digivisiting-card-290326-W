@@ -1,87 +1,78 @@
-// Hero Slider Data
-const heroSlides = [
+// Hero Carousel Data
+const heroImages = [
     {
-        title: "Unleash Your <span class='highlight'>Creativity</span> Through Art",
-        desc: "Learn drawing, painting, and digital art.",
-        image: "assets/images/unlease-your-creativity.jpg"
+        image: "assets/images/hero-1.png"
     },
     {
-        title: "Turn <span class='highlight'>Passion</span> Into Skill",
-        desc: "From beginner to advanced courses.",
-        image: "assets/images/turn-passion-into-skill.jpg"
+        image: "assets/images/hero-2.png"
     },
     {
-        title: "Join <span class='highlight'>500+</span> Students",
-        desc: "Build confidence and creativity.",
-        image: "assets/images/build-confidence-and-creativity.jpg"
+        image: "assets/images/hero-3.png"
+    },
+     {
+        image: "assets/images/hero-4.png"
     }
 ];
 
 let currentSlide = 0;
 
-// DOM Elements
-const heroTitle = document.getElementById('hero-title');
-const heroDesc = document.getElementById('hero-desc');
-const heroImage = document.getElementById('hero-image');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const dots = document.querySelectorAll('.dot');
+// DOM Elements for Hero Banner
+const heroSlideElements = document.querySelectorAll('.hero-slide');
+const carouselDots = document.querySelectorAll('.carousel-dot');
+const prevCarouselBtn = document.querySelector('.prev-carousel');
+const nextCarouselBtn = document.querySelector('.next-carousel');
 
-// Function to update the slider
-function updateSlider(index) {
+// Function to update carousel
+function updateCarousel(index) {
     // Handle wrap-around
-    if (index >= heroSlides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = heroSlides.length - 1;
+    if (index >= heroImages.length) currentSlide = 0;
+    else if (index < 0) currentSlide = heroImages.length - 1;
     else currentSlide = index;
 
-    // Update Content
-    heroTitle.innerHTML = heroSlides[currentSlide].title;
-    heroDesc.textContent = heroSlides[currentSlide].desc;
-    
-    // Add fade effect for image
-    heroImage.style.opacity = 0;
-    setTimeout(() => {
-        heroImage.src = heroSlides[currentSlide].image;
-        heroImage.style.opacity = 1;
-    }, 300);
+    // Update slides visibility
+    heroSlideElements.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+    });
 
-    // Update Dots
-    dots.forEach((dot, i) => {
+    // Update dots
+    carouselDots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
     });
 }
 
-// Add CSS transition to image for smooth fading
-heroImage.style.transition = 'opacity 0.3s ease';
+// Event Listeners for Carousel Controls
+if (nextCarouselBtn) {
+    nextCarouselBtn.addEventListener('click', () => {
+        updateCarousel(currentSlide + 1);
+        resetInterval();
+    });
+}
 
-// Event Listeners for Controls
-nextBtn.addEventListener('click', () => {
-    updateSlider(currentSlide + 1);
-    resetInterval();
-});
+if (prevCarouselBtn) {
+    prevCarouselBtn.addEventListener('click', () => {
+        updateCarousel(currentSlide - 1);
+        resetInterval();
+    });
+}
 
-prevBtn.addEventListener('click', () => {
-    updateSlider(currentSlide - 1);
-    resetInterval();
-});
-
-dots.forEach((dot, index) => {
+// Dots click listeners
+carouselDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-        updateSlider(index);
+        updateCarousel(index);
         resetInterval();
     });
 });
 
 // Auto-play functionality
 let slideInterval = setInterval(() => {
-    updateSlider(currentSlide + 1);
-}, 5000); // Change slide every 5 seconds
+    updateCarousel(currentSlide + 1);
+}, 60000); // Change slide every 60 seconds
 
 function resetInterval() {
     clearInterval(slideInterval);
     slideInterval = setInterval(() => {
-        updateSlider(currentSlide + 1);
-    }, 5000);
+        updateCarousel(currentSlide + 1);
+    }, 60000);
 }
 
 // Mobile Hamburger Menu
@@ -138,3 +129,65 @@ window.addEventListener('resize', () => {
         mainNav.style.display = 'none';
     }
 });
+
+// Smooth scroll + active menu highlighting
+const pageLinks = document.querySelectorAll('.nav-links a[href^="#"], .nav-links a[href="#"]');
+const sections = document.querySelectorAll('section[id]');
+const header = document.querySelector('.header');
+
+function setActiveLink(targetLink) {
+    navLinks.forEach(link => link.classList.toggle('active', link === targetLink));
+}
+
+function getScrollOffset() {
+    return header ? header.offsetHeight + 10 : 10;
+}
+
+function smoothScroll(event) {
+    const link = event.currentTarget;
+    const href = link.getAttribute('href');
+
+    if (href === '#' || href === '') {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveLink(link);
+        if (window.innerWidth <= 768 && mainNav) {
+            mainNav.style.display = 'none';
+        }
+        return;
+    }
+
+    const targetSection = document.querySelector(href);
+    if (targetSection) {
+        event.preventDefault();
+        const top = targetSection.offsetTop - getScrollOffset();
+        window.scrollTo({ top, behavior: 'smooth' });
+        setActiveLink(link);
+        if (window.innerWidth <= 768 && mainNav) {
+            mainNav.style.display = 'none';
+        }
+    }
+}
+
+function updateActiveMenu() {
+    const scrollPosition = window.scrollY + getScrollOffset() + 60;
+    let activeLink = document.querySelector('.nav-links a[href="#"]');
+
+    sections.forEach(section => {
+        if (section.offsetTop <= scrollPosition) {
+            const link = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+            if (link) {
+                activeLink = link;
+            }
+        }
+    });
+
+    if (activeLink) {
+        setActiveLink(activeLink);
+    }
+}
+
+pageLinks.forEach(link => link.addEventListener('click', smoothScroll));
+window.addEventListener('scroll', updateActiveMenu);
+window.addEventListener('load', updateActiveMenu);
+window.addEventListener('resize', updateActiveMenu);

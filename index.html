@@ -31,7 +31,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#courses">Courses</a></li>
                     <li><a href="#">Our Gallery</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <!-- <li><a href="#">Blog</a></li> -->
                     <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
@@ -41,10 +41,10 @@
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <span class="call-title">Call Us Today</span>
-                        <span class="call-number">+959 763 9329</span>
+                        <span class="call-number">+91 959 763 9329</span>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary">Enroll Now</a>
+                <a href="https://forms.gle/FLSuS9hM7SXHqZwr7" target="_blank" class="btn btn-enquiry">Join Now <i class="fas fa-arrow-right"></i></a>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -52,44 +52,40 @@
         </div>
     </header>
 
-    <!-- Hero Section with Slider -->
-    <section class="hero">
-        <div class="hero-bg-shapes"></div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="subtitle">
-                    <span class="subtitle-line"></span>
-                    WELCOME TO IMAGINIC ART ACADEMY
-                    <span class="subtitle-line"></span>
-                </div>
-                <h1 id="hero-title">Unleash Your <span class="highlight">Creativity</span> Through Art</h1>
-                <p id="hero-desc">Discover your artistic potential with our expert-led courses. From beginner to
-                    advanced, we help you turn your passion into professional skills.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Join Now <i class="fas fa-arrow-right"></i></a>
-                    <a href="#courses" class="btn btn-outline">Discover Courses <i class="fas fa-arrow-right"></i></a>
-                </div>
+    <!-- Hero Section Banner with Image Carousel -->
+    <section class="hero-banner">
+        <div class="hero-carousel">
+            <div class="hero-slide active" data-slide="0">
+                <img src="assets/images/hero-1.png" alt="Hero Image 1" class="hero-banner-img">
             </div>
+            <div class="hero-slide" data-slide="1">
+                <img src="assets/images/hero-2.png" alt="Hero Image 2" class="hero-banner-img">
+            </div>
+            <div class="hero-slide" data-slide="2">
+                <img src="assets/images/hero-3.png" alt="Hero Image 3" class="hero-banner-img">
+            </div>
+            <div class="hero-slide" data-slide="3">
+                <img src="assets/images/hero-4.png" alt="Hero Image 4" class="hero-banner-img">
+            </div>
+        </div>
 
-            <div class="hero-image-slider">
-                <div class="slider-frame">
-                    <img id="hero-image" src="assets/images/unlease-your-creativity.jpg" alt="Art Student Painting">
-                    <div class="slider-controls">
-                        <button class="slide-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="slide-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    <div class="slider-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-            </div>
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-btn prev-carousel"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next-carousel"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+            <span class="carousel-dot active" data-dot="0"></span>
+            <span class="carousel-dot" data-dot="1"></span>
+            <span class="carousel-dot" data-dot="2"></span>
+            <span class="carousel-dot" data-dot="3"></span>
         </div>
     </section>
 
     <!-- Stats Bar -->
-    <section class="stats-bar">
+    <!-- <section class="stats-bar">
         <div class="container stats-container">
             <div class="stat-item">
                 <i class="fas fa-users stat-icon"></i>
@@ -123,7 +119,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- About Us Section -->
     <section class="about-section" id="about">
@@ -141,16 +137,19 @@
                 <div class="subtitle">
                     ABOUT US <span class="subtitle-line"></span>
                 </div>
-                <h2>Nurturing Creativity, Building Futures</h2>
-                <p>At Imaginic Art Academy, we believe art is more than just a skill—it's a way of expressing who you
-                    are. Our mission is to inspire, educate, and empower students through high-quality art education in
-                    a supportive and creative environment.</p>
+                <h2>Nurturing Creativity,
+                    Building Confident Artistss</h2>
+                <p>At Imaginic Art Academy, we believe art is not just a skill—it’s a way to express, explore, and grow.
+
+                    We guide students of all ages through structured, step-by-step learning that makes art simple,
+                    enjoyable, and meaningful. With expert guidance and a supportive environment, we help every learner
+                    build creativity, confidence, and artistic skills..</p>
                 <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> Personalized Learning</li>
-                    <li><i class="fas fa-check-circle"></i> Professional Guidance</li>
-                    <li><i class="fas fa-check-circle"></i> Creative Environment</li>
+                    <li><i class="fas fa-check-circle"></i>✔ Step-by-Step Structured Learning</li>
+                    <li><i class="fas fa-check-circle"></i>✔ Expert Guidance & Personal Attention  </li>
+                    <li><i class="fas fa-check-circle"></i>✔ Creative & Friendly Learning Environment </li>
                 </ul>
-                <a href="#" class="btn btn-primary">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="btn btn-primary">Explore Our Programs → <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -222,7 +221,7 @@
     </section>
 
     <!-- CTA Banner -->
-    <section class="cta-banner">
+    <section class="cta-banner" id="contact">
         <div class="container cta-container">
             <div class="cta-icon">
                 <i class="fas fa-graduation-cap"></i>
@@ -232,7 +231,7 @@
                 <p>Join hundreds of students who turned their passion into creativity and career.</p>
             </div>
             <div class="cta-button">
-                <a href="#" class="btn btn-primary">Enroll Now <i class="fas fa-arrow-right"></i></a>
+                <a href="https://forms.gle/FLSuS9hM7SXHqZwr7" class="btn btn-primary">Enroll Now <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -249,6 +248,7 @@
                         <span>ART ACADEMY</span>
                     </div>
                 </div>
+
                 <p>We are dedicated to providing the best art education to inspire creativity and innovation.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -268,37 +268,18 @@
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
-
-            <div class="footer-col links-col">
-                <!-- <h4>Our Courses</h4>
-                <ul>
-                    <li><a href="#">Drawing</a></li>
-                    <li><a href="#">Painting</a></li>
-                    <li><a href="#">Digital Art</a></li>
-                    <li><a href="#">Sculpture</a></li>
-                    <li><a href="#">Craft & Design</a></li>
-                </ul> -->
-            </div>
-
             <div class="footer-col contact-col">
                 <h4>Contact Info</h4>
                 <ul class="contact-list">
-                    <li><i class="fas fa-map-marker-alt"></i> 77, Bharathi nagar ,Swaminathapuram ,periyar colony Bus
+                    <li><i class="fas fa-map-marker-alt"></i> 77, Bharathi nagar ,Swaminathapuram, periyar colony Bus
                         Stop, Tirupur - 641652 </li>
-                    <li><i class="fas fa-phone-alt"></i> +959 763 9329</li>
+                    <li><i class="fas fa-phone-alt"></i> +91 959 763 9329</li>
                     <li><i class="fas fa-envelope"></i> imaginicartacademy@gmail.com</li>
                     <li><i class="fas fa-globe"></i> imaginicacademy.com</li>
                 </ul>
             </div>
 
-            <div class="footer-col newsletter-col">
-                <h4>Newsletter</h4>
-                <p>Subscribe to get the latest updates about our courses and events.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
-            </div>
+
         </div>
         <div class="footer-bottom">
             <div class="container">
